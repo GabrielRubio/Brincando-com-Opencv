@@ -101,7 +101,61 @@ def show_webcam(mirror=False):
             # cropped = image[start_row:end_row , start_col:end_col]     # Simply use indexing to crop out the rectangle we desire
             # cv2.imshow("Cropped Image 4 ", cropped)
 
+            # # ########################################## Convolucao e filtros #########################################
+            # kernel_3x3 = np.ones((3, 3), np.float32) / 9 # Creating our 3 x 3 kernel
+            # blurred = cv2.filter2D(image, -1, kernel_3x3)# We use the cv2.fitler2D to conovlve the kernal with an image 
+            # cv2.imshow('3x3 Kernel Blurring', blurred)
+            
+            # vertical = np.array([[1.,0,-1.],[1.,0,-1.],[1.,0,-1.]])
+            # horizontal = np.array([[1.,1.,1.],[0,0,0],[-1.,-1.,-1.]])
+            
+            # blurred_v = cv2.filter2D(image, -1, vertical)# We use the cv2.fitler2D to conovlve the kernal with an image 
+            # cv2.imshow('Sobel vertical', blurred_v)
+            
+            # blurred_h = cv2.filter2D(image, -1, horizontal)
+            # cv2.imshow('Sobel horizontal', blurred_h)
 
+            # border = cv2.add(blurred_h,blurred_v)
+            # cv2.imshow('Sobel border', border)
+
+            # kernel_7x7 = np.ones((7, 7), np.float32) / 49 # Creating our 7 x 7 kernel
+            # blurred2 = cv2.filter2D(image, -1, kernel_7x7)
+            # cv2.imshow('7x7 Kernel Blurring', blurred2)
+
+            # blur = cv2.blur(image, (3,3)) # Borramento pela media de um quadro (3,3)
+            # cv2.imshow('Averaging', blur)
+
+            # Gaussian = cv2.GaussianBlur(image, (7,7), 0) # Instead of box filter, gaussian kernel
+            # cv2.imshow('Gaussian Blurring', Gaussian)
+
+            # median = cv2.medianBlur(image, 5)  # element is replaced with this median value
+            # cv2.imshow('Median Blurring', median)
+
+            # bilateral = cv2.bilateralFilter(image, 9, 75, 75) # Bilateral is very effective in noise removal while keeping edges sharp
+            # cv2.imshow('Bilateral Blurring', bilateral)
+
+            # # ########################################## Bordas #########################################
+            # kernel_sharpening = np.array([[-1,-1,-1], 
+            #                               [-1,9,-1], 
+            #                               [-1,-1,-1]])
+
+            # # applying different kernels to the input image
+            # sharpened = cv2.filter2D(image, -1, kernel_sharpening)
+            # cv2.imshow('Image Sharpening', sharpened)
+
+            # sobel_x = cv2.Sobel(image, cv2.CV_64F, 0, 1, ksize=5)
+            # sobel_y = cv2.Sobel(image, cv2.CV_64F, 1, 0, ksize=5)
+            # cv2.imshow('Sobel X', sobel_x)
+            # cv2.imshow('Sobel Y', sobel_y)
+
+            # sobel_OR = cv2.bitwise_or(sobel_x, sobel_y)
+            # cv2.imshow('sobel_OR', sobel_OR)
+
+            # laplacian = cv2.Laplacian(image, cv2.CV_64F)
+            # cv2.imshow('Laplacian', laplacian)
+
+            # canny = cv2.Canny(image, 100, 150)
+            # cv2.imshow('Canny', canny)
 
             if cv2.waitKey(1) == 27: 
                 break  # esc to quit
